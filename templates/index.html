@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stroke Prediction App</title>
+
+  <!-- Link to Bootstrap CSS (update the link to the latest version) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS for elegant background color -->
+  <style>
+    body {
+      background-image: linear-gradient(rgba(152, 221, 248, 0.7), rgba(19, 95, 209, 0.7)), url('path/to/your/image.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Adjust card width */
+    .card {
+      max-width: 1000px; /* Set your desired max-width */
+      width: 100%; /* Ensure card takes full width of its container */
+    }
+    
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+      <div class="card-header bg-primary text-white text-center">
+        <h2>Stroke Prediction</h2>
+      </div>
+      <div class="card-body">
+        <form method="post" action="/predict">
+          <!-- Age Input -->
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" class="form-control" name="age" required>
+          </div>
+
+          <!-- Average Glucose Level Input -->
+          <div class="form-group">
+            <label for="avg_glucose_level">Average Glucose Level:</label>
+            <input type="text" class="form-control" name="avg_glucose_level" required>
+          </div>
+
+          <!-- BMI Input -->
+          <div class="form-group">
+            <label for="bmi">BMI:</label>
+            <input type="text" class="form-control" name="bmi" required>
+          </div>
+
+          <!-- Gender and Ever Married Inputs -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="gender">Gender:</label>
+              <select class="form-control" name="gender" required>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="ever_married">Ever Married:</label>
+              <select class="form-control" name="ever_married" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Work Type Input -->
+          <div class="form-group">
+            <label for="work_type">Work Type:</label>
+            <select class="form-control" name="work_type" required>
+              <option value="3">Private</option>
+              <option value="4">Self-employed</option>
+              <option value="1">Government Job</option>
+              <option value="0">Children</option>
+              <option value="2">Never Worked</option>
+            </select>
+          </div>
+
+          <!-- Residence Type Input -->
+          <div class="form-group">
+            <label for="Residence_type">Residence Type:</label>
+            <select class="form-control" name="Residence_type" required>
+              <option value="1">Urban</option>
+              <option value="0">Rural</option>
+            </select>
+          </div>
+
+          <!-- Smoking Status Input -->
+          <div class="form-group">
+            <label for="smoking_status">Smoking Status:</label>
+            <select class="form-control" name="smoking_status" required>
+              <option value="0">Formerly Smoked</option>
+              <option value="1">Never Smoked</option>
+              <option value="2">Smokes</option>
+            </select>
+          </div>
+
+          <!-- Hypertension and Heart Disease Inputs -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="hypertension">Hypertension:</label>
+              <select class="form-control" name="hypertension" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="heart_disease">Heart Disease:</label>
+              <select class="form-control" name="heart_disease" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Predict Button -->
+          <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+
+        <!-- Prediction Result Display -->
+        {% if prediction_text %}
+        <div class="mt-3 alert alert-info text-center">
+          <h5>{{ prediction_text }}</h5>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center mt-5">
+    <p>&copy; 2023 Arif Su'admaji. All rights reserved.</p>
+  </footer>
+
+  <!-- Link to Bootstrap JS (update the link to the latest version) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
